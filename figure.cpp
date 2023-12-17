@@ -30,4 +30,11 @@ figure::~figure()
 
 }
 
+//Конструткор
+figure::figure()
+{
+    area = 0;
+    perimeter = 0;
+}
+
 int figure::type = 0;

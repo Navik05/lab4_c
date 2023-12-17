@@ -8,6 +8,6 @@ class square : public figure
 public:
     square(double a);
     void workSquare();
-    float getDiagonal();
+    double& getDiagonal();
+    double operator +(double s);
 };
-

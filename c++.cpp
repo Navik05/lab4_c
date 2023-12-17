@@ -4,17 +4,18 @@
 #include "square.h"
 #include "circle.h"
 #include "triangle.h"
+#include <string>
 
 int block_int(int min, int max);
 double block_double();
 
 int main()
 {
-    int type, min, max, i;
-    double sides[N]={1,2,3}, p, s;
+    int min, max, i;
+    double sides[N], p = 0, s = 0;
     square one = NULL;
     circle two = NULL;
-    triangle three = NULL;
+    triangle three;
     setlocale(LC_ALL, "Rus");
     //Полный цикл программы
     do {
@@ -47,35 +48,36 @@ int main()
         }
         //Вывод результатов
         printf("Фигура: ");
+        std::string type, line = "треугольник";
         switch (one.getType())
         {
         case 1:
             printf("квадрат");
             printf("\nДиагональ: %f", one.getDiagonal());
-            s = one.getArea();
+            s = one + s;
             p = one.getPerimeter();
             break;
         case 2:
             printf("круг");
-            printf("\nДиаметр: %f", two.getD());
+            printf("\nДиаметр: %f", *two.getD());
             s = two.getArea();
             p = two.getPerimeter();
             break;
         case 3:
-            switch (three.getView())
+            switch (view(three))
             {
             case 1:
-                printf("равносторонний ");
+                type = "равносторонний ";
                 break;
             case 2:
-                printf("равнобедренный ");
+                type = "равнобедренный ";
                 break;
             case 3:
-                printf("разносторонний ");
+                type = "разносторонний ";
                 break;
             default:;
             }
-            printf("треугольник");
+            std::cout << type << line;
             s = three.getArea();
             p = three.getPerimeter();
             break;
@@ -116,7 +118,7 @@ double block_double()
         {
             printf("Такого варианта нет. Попробуйте ещё раз: ");
         }
-        while (scanf("%f", &e) != 1)
+        while (scanf("%lf", &e) != 1)
         {
             while (getchar() != '\n');
             printf("Ошибка. Попробуйте ещё раз: ");
@@ -124,6 +126,14 @@ double block_double()
         f = 0;
         while (getchar() != '\n');
     } while (e <= 0);
-    printf("\n");
     return e;
+}
+//Дружественная функция
+int view(triangle& three)
+{
+    if (three.sides[0] == three.sides[1] && three.sides[1] == three.sides[2])
+        return 1;
+    else if (three.sides[0] == three.sides[1] || three.sides[1] == three.sides[2] || three.sides[0] == three.sides[2])
+        return 2;
+    else return 3;
 }

@@ -5,8 +5,6 @@ square::square(double a)
 {
     this->a = a;
     diagonal = 0;
-    area = 0;
-    perimeter = 0;
 }
 
 //Обработка данных
@@ -18,7 +16,13 @@ void square::workSquare()
 }
 
 //Вывод диагонали
-float square::getDiagonal()
+double& square::getDiagonal()
 {
     return diagonal;
+}
+
+//Префиксная перегрузка оператора
+double square::operator+(double s)
+{
+    return area + s;
 }

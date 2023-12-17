@@ -8,5 +8,5 @@ class circle : public figure
 public:
     circle(double r);
     void workCircle();
-    float getD();
+    double* getD();
 };

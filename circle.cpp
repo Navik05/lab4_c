@@ -5,8 +5,6 @@ circle::circle(double r)
 {
     this->r = r;
     d = 0;
-    area = 0;
-    perimeter = 0;
 }
 
 //Обработка данных
@@ -18,7 +16,7 @@ void circle::workCircle()
 }
 
 //Вывод диаметра
-float circle::getD()
+double* circle::getD()
 {
-    return d;
+    return &d;
 }

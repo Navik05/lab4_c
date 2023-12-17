@@ -13,5 +13,6 @@ public:
     double getPerimeter();
     static void setType(int e);
     static int getType();
+    figure();
     ~figure();
 };

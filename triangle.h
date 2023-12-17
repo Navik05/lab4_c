@@ -3,11 +3,10 @@
 
 class triangle : public figure
 {
+    friend int view(triangle& three);
     double sides[N];
-    int view;
 public:
+    triangle();
     triangle(double sides[]);
     void workTriangle();
-    int getView();
 };
-
